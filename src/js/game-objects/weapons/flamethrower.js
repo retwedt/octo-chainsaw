@@ -1,7 +1,7 @@
 module.exports = Flamethrower;
 
 var BaseWeapon = require("./base-weapon.js");
-var Spray = require("./base-spray.js");
+var SprayProjectile = require("./spray-projectile.js");
 
 Flamethrower.prototype = Object.create(BaseWeapon.prototype);
 
@@ -48,9 +48,9 @@ Flamethrower.prototype.fire = function (targetPos) {
 
 Flamethrower.prototype._createProjectile = function (x, y, angle, speed, 
         life) {
-    var p = new Spray(this.game, x, y, "assets", "weapons/e-burst-01", 
+    var p = new SprayProjectile(this.game, x, y, "assets", "weapons/e-burst-01", 
         this, this._player, 9, angle, speed, life, projectileOptions);
-    p.rotation += 135;
+    // p.rotation += 135;
     // // Randomize the color of each flame.
     var g = this.game.rnd.integerInRange(0, 255);
     p.tint = Phaser.Color.getColor(240, g, 24);

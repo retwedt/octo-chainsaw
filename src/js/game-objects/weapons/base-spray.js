@@ -1,11 +1,11 @@
-module.exports = BaseSpray;
+module.exports = SprayProjectile;
 
 var SpriteUtils = require("../../helpers/sprite-utilities.js");
 var BaseProjectile = require("./base-projectile.js");
 
-BaseSpray.prototype = Object.create(BaseProjectile.prototype);
+SprayProjectile.prototype = Object.create(BaseProjectile.prototype);
 
-function BaseSpray(game, x, y, key, frame, parentGroup, player, damage,
+function SprayProjectile(game, x, y, key, frame, parentGroup, player, damage,
     angle, speed, life, options) {
     // Set an arbitrary max range, this shouldn't come up
     // because of the age limit though
@@ -35,7 +35,7 @@ function BaseSpray(game, x, y, key, frame, parentGroup, player, damage,
     }
 }
 
-BaseSpray.prototype.update = function() {
+SprayProjectile.prototype.update = function() {
     // Update the age counter of the spray
     this._age++;
 
@@ -48,7 +48,7 @@ BaseSpray.prototype.update = function() {
     BaseProjectile.prototype.update.apply(this, arguments);
 }
 
-BaseSpray.prototype.postUpdate = function () {
+SprayProjectile.prototype.postUpdate = function () {
     // Update arcade physics
     BaseProjectile.prototype.postUpdate.apply(this, arguments);
     if ((this._age > this._life)) {
@@ -56,6 +56,6 @@ BaseSpray.prototype.postUpdate = function () {
     }
 };
 
-BaseSpray.prototype.destroy = function () {
+SprayProjectile.prototype.destroy = function () {
     BaseProjectile.prototype.destroy.apply(this, arguments);
 };
