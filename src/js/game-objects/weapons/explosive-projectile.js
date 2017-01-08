@@ -7,7 +7,6 @@ ExplosiveProjectile.prototype = Object.create(BaseProjectile.prototype);
 
 function ExplosiveProjectile(game, x, y, key, frame, parentGroup, player, damage,
     angle, speed, range, life, options) {
-    // Phaser.Sprite.call(this, game, x, y, key, frame);
     BaseProjectile.call(this, game, x, y, key, frame, parentGroup, player, 
         damage, angle, speed, range, options);
 
@@ -17,6 +16,7 @@ function ExplosiveProjectile(game, x, y, key, frame, parentGroup, player, damage
     // Store variable for explosion
     this._explosionRadius = 80;
 
+    this._life = life;
     this._timer = game.time.create(false);
     this._timer.start();
 
