@@ -9,7 +9,7 @@ Flamethrower.prototype = Object.create(BaseWeapon.prototype);
 var projectileOptions = {
     rotateOnSetup: true,
     canBurn: true,
-    speedModifier: 0.976,
+    speedModifier: 0.964,
     sizeModifier: 1.018,
     initialSize: 0.24,
     maxSize: 0.86,
@@ -30,7 +30,7 @@ Flamethrower.prototype.fire = function (targetPos) {
         var mod = (this.game.rnd.integerInRange(0, 15) * (Math.PI / 180)) *
                   this.game.rnd.sign();
         var angle = angleToPlayer + mod;
-        var speed = this.game.rnd.integerInRange(164,184)
+        var speed = this.game.rnd.integerInRange(124,156)
         var life = this.game.rnd.integerInRange(64,72)
         // Start bullet in a position along that trajectory, but in front of 
         // the player

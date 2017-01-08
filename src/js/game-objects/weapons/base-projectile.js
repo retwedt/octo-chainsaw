@@ -8,6 +8,7 @@ BaseProjectile.prototype = Object.create(Phaser.Sprite.prototype);
 // base projectile class
 // - isDestructible - bool
 // - rotateOnSetup - bool
+// - canBurn - bool
 // - canBounce - bool
 // - canPierce - bool // bullets go through enemies
 // - speedModifier - range (0 - 1.0)
@@ -37,6 +38,9 @@ function BaseProjectile(game, x, y, key, frame, parentGroup, player, damage,
     if (options !== undefined && options.canPierce !== undefined)
         this._canPierce = options.canPierce;
     else this._canPierce = false;
+    if (options !== undefined && options.canBurn !== undefined)
+        this._canBurn = options.canBurn;
+    else this._canBurn = true;
     if (options !== undefined && options.canBounce !== undefined)
         this._canBounce = options.canBounce;
     else this._canBounce = true;
@@ -86,6 +90,14 @@ BaseProjectile.prototype.update = function() {
     // trajectory. NOTE(rex): HMMMM This isn't quite working...
     if (this._tracking) {
         // Was something supposed to happen here?
+    }
+
+    // If the projectile can burn, check each tile for a fire.
+    // If one exists, ignore the tile and keep moving.  If there is no fire,
+    // destroy the projectile and create a fire.
+    if (this._canBurn && this.checkTileMapLocation(this.position.x,
+        this.position.y)) {
+        // this isn't working yet...
     }
 }
 
