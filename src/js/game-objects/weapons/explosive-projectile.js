@@ -12,6 +12,8 @@ function ExplosiveProjectile(game, x, y, key, frame, parentGroup, player, damage
 
     this._graphics = game.make.graphics(0, 0);
     this.addChild(this._graphics);
+    console.log('constructor')
+    console.log(this._graphics);
 
     // Store variable for explosion
     this._explosionRadius = 80;
@@ -33,6 +35,7 @@ ExplosiveProjectile.prototype.explode = function () {
     // Stop moving
     this.body.velocity.set(0);
     // Draw explosion circle
+    console.log(this._graphics);
     this._graphics.clear();
     this._graphics.beginFill(0x000000, 0.5);
     this._graphics.drawCircle(0, 0, this._explosionRadius * 2);
@@ -75,6 +78,7 @@ ExplosiveProjectile.prototype.postUpdate = function () {
 
 // eslint-disable-next-line no-unused-vars
 ExplosiveProjectile.prototype._onCollideWithMap = function (self, map) {
+    console.log('ExplosiveProjectile#_onCollideWithMap');
     self.explode();
 };
 

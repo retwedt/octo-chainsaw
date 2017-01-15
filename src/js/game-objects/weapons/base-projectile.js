@@ -120,6 +120,7 @@ BaseProjectile.prototype.destroy = function () {
 
 // eslint-disable-next-line no-unused-vars
 BaseProjectile.prototype._onCollideWithMap = function (self, map) {
+    console.log('BaseProjectile#_onCollideWithMap')
     if (self._isDestructable) {
         self._remove = true;
     }
