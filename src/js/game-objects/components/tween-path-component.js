@@ -34,6 +34,7 @@ class TweenPathComponent {
             .repeatAll(shouldRepeat ? -1 : 0)
             .yoyo(shouldYoYo);
         this._firstUpdate = true;
+        this.game.globals.plugins.pauseSystem.register(this._tween);
 
         // If the level has changed, switch to a targeting component (to be safe)
         this._levelManager = this.game.globals.levelManager;

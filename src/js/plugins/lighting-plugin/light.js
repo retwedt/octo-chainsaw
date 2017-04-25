@@ -109,6 +109,7 @@ Light.prototype.startPulse = function (speed, width) {
     this._pulseTween = this.game.add.tween(this._pulse).to(
         {position: endPosition}, duration, Phaser.Easing.Linear.None
     ).to({position: endPosition}, 0).start();
+    this.game.globals.plugins.pauseSystem.register(this._pulseTween);
     // Note: adding an extra 0s tween to keep the tween going 1x frame past when it would normally
     // end. This gives update a chance to catch up and draw the final tweened value before the tween
     // is no longer running (which stops the light from redrawing).
