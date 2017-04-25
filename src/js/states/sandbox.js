@@ -15,6 +15,7 @@ const EffectsPlugin =
     require("../plugins/camera-effects-plugin/camera-effects-plugin.js");
 const LevelManager = require("../game-objects/level-manager.js");
 const EasyStarPlugin = require("../plugins/easy-star-plugin.js");
+const PausePlugin = require("../plugins/pause-plugin.js");
 
 function Sandbox() {}
 
@@ -66,8 +67,11 @@ Sandbox.prototype.create = function () {
     globals.plugins.effects = game.plugins.add(EffectsPlugin); 
     globals.plugins.lighting = game.plugins.add(LightingPlugin, groups.lightingOverlay); 
     globals.plugins.satBody = game.plugins.add(SatBodyPlugin);
+    globals.plugins.pauseSystem = game.plugins.add(PausePlugin);
     this.lighting = globals.plugins.lighting;
     this.lighting.setOpacity(0.9);
+
+    globals.plugins.pauseSystem.register(groups.background, groups.midground, groups.foreground, groups.lightingOverlay);
 
     // Easystarjs plugin
     const easyStar = globals.plugins.easyStar = game.plugins.add(EasyStarPlugin);
